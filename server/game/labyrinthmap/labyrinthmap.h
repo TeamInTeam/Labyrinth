@@ -26,20 +26,21 @@ class LabyrinthMap {
     // x3 - Metro;
     // 04 - Armoury;
     // 05 - Hospital;
-    // x6 - Mine
+    // x6 - Mine;
     // 07 - Treasure.
     LabyrinthMap(int32_t size_x, int32_t size_y, int32_t **arr);
-    // Deleted Constructors.
-    LabyrinthMap(const LabyrinthMap &obj) = delete;
-    LabyrinthMap& operator= (const LabyrinthMap &obj) = delete;
+    // Copy Constructor.
+    LabyrinthMap(const LabyrinthMap &obj);
+    // Affectation Operator.
+    LabyrinthMap& operator= (const LabyrinthMap &obj);
     // Destructor.
     ~LabyrinthMap();
 
     // Returns true, if Player can go on this Field.
-    bool CanGo(int32_t i, int32_t j);
+    bool CanGo(int32_t i, int32_t j) const;
 
     // Returns Field Type.
-    std::string GetType(int32_t i, int32_t j);
+    std::string GetType(int32_t i, int32_t j) const;
 
  private:
     // Width and Length of Game Map.

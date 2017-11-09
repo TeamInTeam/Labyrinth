@@ -67,16 +67,56 @@ LabyrinthMap::LabyrinthMap(int32_t size_x, int32_t size_y, int32_t **arr) {
         }
 }
 
+LabyrinthMap::LabyrinthMap(const LabyrinthMap &obj) {
+    this->size_x_ = obj.size_x_;
+    this->size_y_ = obj.size_y_;
+    this->game_map_.reserve(size_x_);
+    for (int32_t i = 0; i < size_x_; i++)
+        this->game_map_[i].reserve(size_y_);
+    for (int32_t i = 0; i < size_x_; i++)
+        for (int32_t j = 0; j < size_y_; j++) {
+            if (obj.GetType(i, j) == "Armoury") {
+                this->game_map_[i][i] = new Wall(dynamic_cast<Armoury*> (obj.game_map_[i][j]));
+                continue;
+            }
+            if (obj.GetType(i, j) == "Hospital") {
+                this->game_map_[i][i] = new Wall(dynamic_cast<Armoury*> (obj.game_map_[i][j]));
+                continue;
+            }
+            // Metro.
+            if (obj.GetType(i, j) == "Mine") {
+                this->game_map_[i][i] = new Wall(dynamic_cast<Mine*> (obj.game_map_[i][j]));
+                continue;
+            }
+            if (obj.GetType(i, j) == "River") {
+                this->game_map_[i][i] = new Wall(dynamic_cast<River*> (obj.game_map_[i][j]));
+                continue;
+            }
+            if (obj.GetType(i, j) == "Road") {
+                this->game_map_[i][i] = new Road();
+                continue;
+            }
+            if (obj.GetType(i, j) == "Treasure") {
+                this->game_map_[i][i] = new Treasure();
+                continue;
+            }
+            if (obj.GetType(i, j) == "Wall") {
+                this->game_map_[i][i] = new Wall(dynamic_cast<Wall*> (obj.game_map_[i][j]));
+                continue;
+            }
+        }
+}
+
 LabyrinthMap::~LabyrinthMap() {
     for (int32_t i = 0; i < size_x_; i++)
         for (int32_t j = 0; j < size_y_; j++)
             delete game_map_[i][j];
 }
 
-bool LabyrinthMap::CanGo(int32_t i, int32_t j) {
+bool LabyrinthMap::CanGo(int32_t i, int32_t j) const {
     return (dynamic_cast<Field*> (game_map_[i][j]))->CanGo();
 }
 
-std::string LabyrinthMap::GetType(int32_t i, int32_t j) {
+std::string LabyrinthMap::GetType(int32_t i, int32_t j) const {
     return (dynamic_cast<Field*> (game_map_[i][j]))->GetType();
 }
