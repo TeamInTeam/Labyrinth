@@ -1,7 +1,7 @@
 /* Copyright (C) 2017 Mikhail Masyagin */
 
-#ifndef SERVER_ACTIVEPLAYER_ACTIVEPLAYER_H_
-#define SERVER_ACTIVEPLAYER_ACTIVEPLAYER_H_
+#ifndef SERVER_GAME_ACTIVEPLAYER_ACTIVEPLAYER_H_
+#define SERVER_GAME_ACTIVEPLAYER_ACTIVEPLAYER_H_
 
 #include <inttypes.h>
 #include <string>
@@ -15,13 +15,14 @@ class ActivePlayer {
     ActivePlayer(uint64_t game_id,
                  uint64_t player_id,
                  std::string nickname,
-                 std::string race, 
+                 std::string race,
                  int32_t health,
-                 int32_t protection, 
+                 int32_t protection,
                  int32_t damage,
                  int32_t perception,
                  int32_t intellect,
                  int32_t fortune,
+                 // Aids and Weapons.
                  int32_t size_x,
                  int32_t size_y,
                  int32_t current_x,
@@ -44,7 +45,7 @@ class ActivePlayer {
     bool IsVisible(int32_t i, int32_t j);
     // Make field (i, j) visible.
     void MakeVisible(int32_t i, int32_t j);
-    
+
     // Returns true if player is alive.
     bool IsAlive();
 
@@ -74,4 +75,4 @@ class ActivePlayer {
     int32_t previous_y_;
 };
 
-#endif  // SERVER_ACTIVEPLAYER_ACTIVEPLAYER_H_
+#endif  // SERVER_GAME_ACTIVEPLAYER_ACTIVEPLAYER_H_

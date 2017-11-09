@@ -1,7 +1,7 @@
 /* Copyright (C) 2017 Mikhail Masyagin */
 
-#ifndef SERVER_MAP_RIVER_RIVER_H_
-#define SERVER_MAP_RIVER_RIVER_H_
+#ifndef SERVER_GAME_LABYRINTHMAP_RIVER_RIVER_H_
+#define SERVER_GAME_LABYRINTHMAP_RIVER_RIVER_H_
 
 #include <inttypes.h>
 #include <string>
@@ -22,6 +22,16 @@ class River : public Field {
     // Returns true if player can go
     // to this field.
     bool CanGo();
+
+    // Returns Array's Index.
+    int32_t GetIndex();
+
+ private:
+    // Index.
+    int32_t index_;
+
+    // River Coordinates.
+    static std::vector<std::pair<int32_t, int32_t> > coordinates_;
 };
 
-#endif  // SERVER_MAP_RIVER_RIVER_H_
+#endif  // SERVER_GAME_LABYRINTHMAP_RIVER_RIVER_H_

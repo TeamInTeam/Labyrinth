@@ -1,18 +1,18 @@
 /* Copyright (C) 2017 Mikhail Masyagin */
 
-#ifndef SERVER_MAP_ROAD_ROAD_H_
-#define SERVER_MAP_ROAD_ROAD_H_
+#ifndef SERVER_MAP_TREASURE_TREASURE_H_
+#define SERVER_MAP_TREASURE_TREASURE_H_
 
 #include <inttypes.h>
 #include <string>
 #include "../field/field.h"
 
 /*
-  Road Class.
+  Treasure Class.
  */
-class Road : public Field {
+class Treasure : public Field {
  public:
-    Road();
+    Treasure();
 
     // Returns Type of Field.
     std::string GetType();
@@ -22,4 +22,4 @@ class Road : public Field {
     bool CanGo();
 };
 
-#endif  // SERVER_MAP_ROAD_ROAD_H_
+#endif  // SERVER_MAP_TREASURE_TREASURE_H_

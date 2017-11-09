@@ -5,6 +5,7 @@
 
 #include <inttypes.h>
 #include <string>
+#include <vector>
 #include "./activeplayer/activeplayer.h"
 #include "./labyrinthmap/field/field.h"
 #include "./labyrinthmap/road/road.h"

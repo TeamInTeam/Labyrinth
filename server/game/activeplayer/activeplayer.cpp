@@ -7,13 +7,14 @@
 ActivePlayer::ActivePlayer(uint64_t game_id,
                            uint64_t player_id,
                            std::string nickname,
-                           std::string race, 
+                           std::string race,
                            int32_t health,
-                           int32_t protection, 
+                           int32_t protection,
                            int32_t damage,
                            int32_t perception,
                            int32_t intellect,
                            int32_t fortune,
+                           // Aids and Weapons.
                            int32_t size_x,
                            int32_t size_y,
                            int32_t current_x,
@@ -41,7 +42,7 @@ ActivePlayer::ActivePlayer(uint64_t game_id,
             visibility_of_labyrinthmap_[i][j] = false;
     }
     visibility_of_labyrinthmap_[current_x][current_y] = true;
-    
+
     current_x_ = current_x;
     current_y_ = current_y;
 }
