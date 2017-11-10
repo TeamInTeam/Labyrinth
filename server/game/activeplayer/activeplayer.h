@@ -27,27 +27,25 @@ class ActivePlayer {
                  int32_t size_y,
                  int32_t current_x,
                  int32_t current_y);
-    // Default Constructor to be able to create
-    // arrays of ActivePlayers.
     ActivePlayer();
 
     // Returns Health.
-    int32_t GetHealth();
+    int32_t GetHealth() const;
     // Returns true if New Health is correct.
     bool SetHealth(int32_t health);
 
     // Returns Protection.
-    int32_t GetProtection();
+    int32_t GetProtection() const;
     // Returns true if New Protection is correct.
     bool SetProtection(int32_t protection);
 
     // Returns true if (i, j) field is visible.
-    bool IsVisible(int32_t i, int32_t j);
+    bool IsVisible(int32_t i, int32_t j) const;
     // Make field (i, j) visible.
     void MakeVisible(int32_t i, int32_t j);
 
     // Returns true if player is alive.
-    bool IsAlive();
+    bool IsAlive() const;
 
  private:
     uint64_t game_id_;

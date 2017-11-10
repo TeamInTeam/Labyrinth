@@ -29,12 +29,19 @@ class LabyrinthMap {
     // x6 - Mine;
     // 07 - Treasure.
     LabyrinthMap(int32_t size_x, int32_t size_y, int32_t **arr);
+    // Default Constructor.
+    LabyrinthMap();
     // Copy Constructor.
     LabyrinthMap(const LabyrinthMap &obj);
     // Affectation Operator.
     LabyrinthMap& operator= (const LabyrinthMap &obj);
     // Destructor.
     ~LabyrinthMap();
+
+    // Returns X size of Map.
+    int32_t GetSizeX() const;
+    // Returns Y size of Map.
+    int32_t GetSizeY() const;
 
     // Returns true, if Player can go on this Field.
     bool CanGo(int32_t i, int32_t j) const;

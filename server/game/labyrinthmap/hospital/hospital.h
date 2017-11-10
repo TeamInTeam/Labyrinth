@@ -19,12 +19,12 @@ class Hospital : public Field {
 
     // Returns true if player can go
     // to this field.
-    bool CanGo();
+    bool CanGo() const;
 
     // Returns number of Aids in Hospital.
-    int32_t NumberOfAids();
+    int32_t NumberOfAids() const;
     // Decrements number of Aids in Hospital.
-    void DecrementNumberOfAids();
+    void DecrementNumberOfAids() const;
 
  private:
     // Type of Field.
@@ -39,3 +39,5 @@ class Hospital : public Field {
 };
 
 #endif  // SERVER_GAME_LABYRINTHMAP_HOSPITAL_HOSPITAL_H_
+
+// To parse JSON: 

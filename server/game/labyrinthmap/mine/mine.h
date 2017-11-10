@@ -19,12 +19,12 @@ class Mine : public Field {
 
     // Returns true if player can go
     // to this field.
-    bool CanGo();
+    bool CanGo() const;
 
     // Returns Damage of Mine.
-    int32_t GetDamage();
+    int32_t GetDamage() const;
     // Returns Visibility of Mine.
-    int32_t GetVisibility();
+    int32_t GetVisibility() const;
 
  private:
     // Type of Field.

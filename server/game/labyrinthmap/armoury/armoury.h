@@ -15,14 +15,14 @@ class Armoury : public Field {
     explicit Armoury(int32_t number_of_weapons);
 
     // Returns Type of Field.
-    std::string GetType();
+    std::string GetType() const;
 
     // Returns true if player can go
     // to this field.
-    bool CanGo();
+    bool CanGo() const;
 
     // Returns number of Weapons in Armoury.
-    int32_t NumberOfWeapons();
+    int32_t NumberOfWeapons() const;
     // Decrements number of Weapons in Armoury.
     void DecrementNumberOfWeapons();
 

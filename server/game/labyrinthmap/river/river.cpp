@@ -7,19 +7,13 @@
 #include "./river.h"
 
 River::River(int32_t x, int32_t y) :
-    Field("River", true) {
-    index_ = coordinates_.size();
-    coordinates_.push_back(std::make_pair(x, y));
-}
+    Field("River", true) {}
 
-std::string River::GetType() {
+std::string River::GetType() const {
     return type_;
 }
 
-bool River::CanGo() {
+bool River::CanGo() const {
     return can_go_;
 }
 
-int32_t River::GetIndex() {
-    return index_;
-}

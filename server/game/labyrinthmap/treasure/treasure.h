@@ -15,11 +15,11 @@ class Treasure : public Field {
     Treasure();
 
     // Returns Type of Field.
-    std::string GetType();
+    std::string GetType() const;
 
     // Returns true if player can go
     // to this field.
-    bool CanGo();
+    bool CanGo() const;
 };
 
 #endif  // SERVER_MAP_TREASURE_TREASURE_H_

@@ -89,7 +89,7 @@ LabyrinthMap::LabyrinthMap(const LabyrinthMap &obj) {
                 continue;
             }
             if (obj.GetType(i, j) == "River") {
-                this->game_map_[i][i] = new Wall(dynamic_cast<River*> (obj.game_map_[i][j]));
+                this->game_map_[i][i] = new River();
                 continue;
             }
             if (obj.GetType(i, j) == "Road") {
@@ -107,10 +107,64 @@ LabyrinthMap::LabyrinthMap(const LabyrinthMap &obj) {
         }
 }
 
+LabyrinthMap& LabyrinthMap::operator= (const LabyrinthMap &obj) {
+    if (this != &obj) {
+        for (int32_t i = 0; i < this->size_x_; i++)
+            for (int32_t j = 0; j < this->size_y_; j++)
+                delete this->game_map_[i][j];
+        this->size_x_ = obj.size_x_;
+        this->size_y_ = obj.size_y_;
+        this->game_map_.reserve(this->size_x_);
+        for (int32_t i = 0; i < this->size_x_; i++)
+            this->game_map_[i].reserve(this->size_y_);
+        for (int32_t i = 0; i < this->size_x_; i++)
+            for (int32_t j = 0; j < this->size_y_; j++) {
+                            if (obj.GetType(i, j) == "Armoury") {
+                this->game_map_[i][i] = new Wall(dynamic_cast<Armoury*> (obj.game_map_[i][j]));
+                continue;
+            }
+            if (obj.GetType(i, j) == "Hospital") {
+                this->game_map_[i][i] = new Wall(dynamic_cast<Armoury*> (obj.game_map_[i][j]));
+                continue;
+            }
+            // Metro.
+            if (obj.GetType(i, j) == "Mine") {
+                this->game_map_[i][i] = new Wall(dynamic_cast<Mine*> (obj.game_map_[i][j]));
+                continue;
+            }
+            if (obj.GetType(i, j) == "River") {
+                this->game_map_[i][i] = new River();
+                continue;
+            }
+            if (obj.GetType(i, j) == "Road") {
+                this->game_map_[i][i] = new Road();
+                continue;
+            }
+            if (obj.GetType(i, j) == "Treasure") {
+                this->game_map_[i][i] = new Treasure();
+                continue;
+            }
+            if (obj.GetType(i, j) == "Wall") {
+                this->game_map_[i][i] = new Wall(dynamic_cast<Wall*> (obj.game_map_[i][j]));
+                continue;
+            }
+            }
+    }
+    return *this;
+}
+
 LabyrinthMap::~LabyrinthMap() {
     for (int32_t i = 0; i < size_x_; i++)
         for (int32_t j = 0; j < size_y_; j++)
             delete game_map_[i][j];
+}
+
+int32_t LabyrinthMap::GetSizeX() const {
+    return size_x_;
+}
+
+int32_t LabyrinthMap::GetSizeY() const {
+    return size_y_;
 }
 
 bool LabyrinthMap::CanGo(int32_t i, int32_t j) const {

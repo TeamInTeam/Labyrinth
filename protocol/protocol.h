@@ -17,6 +17,8 @@ struct Turn {
 
     // Type of Turn.
     std::string type_of_turn;
+
+    // coordinates
 };
 
 /*
@@ -63,11 +65,6 @@ struct TurnGo {
 
     // Is True if there is Enemy.
     bool is_here_enemy;
-
-    // Previous Coordinates.
-    int32_t previous_x, previous_y;
-    // Is True if there is Enemy in previous.
-    bool is_here_enemy_previous;
 };
 
 /*

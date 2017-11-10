@@ -15,11 +15,11 @@ class Road : public Field {
     Road();
 
     // Returns Type of Field.
-    std::string GetType();
+    std::string GetType() const;
 
     // Returns true if player can go
     // to this field.
-    bool CanGo();
+    bool CanGo() const;
 };
 
 #endif  // SERVER_MAP_ROAD_ROAD_H_

@@ -17,21 +17,11 @@ class River : public Field {
     River();
 
     // Returns Type of Field.
-    std::string GetType();
+    std::string GetType() const;
 
     // Returns true if player can go
     // to this field.
-    bool CanGo();
-
-    // Returns Array's Index.
-    int32_t GetIndex();
-
- private:
-    // Index.
-    int32_t index_;
-
-    // River Coordinates.
-    static std::vector<std::pair<int32_t, int32_t> > coordinates_;
+    bool CanGo() const;
 };
 
 #endif  // SERVER_GAME_LABYRINTHMAP_RIVER_RIVER_H_

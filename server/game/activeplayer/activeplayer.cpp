@@ -18,23 +18,20 @@ ActivePlayer::ActivePlayer(uint64_t game_id,
                            int32_t size_x,
                            int32_t size_y,
                            int32_t current_x,
-                           int32_t current_y) {
-    game_id_ = game_id;
-
-    player_id_ = player_id;
-    nickname_ = nickname;
-    race_ = race;
-
-    health_ = health;
-    protection_ = protection;
-
-    damage_ = damage;
-    perception_ = perception;
-    intellect_ = intellect;
-    fortune_ = fortune;
-
-    size_x_ = size_x;
-    size_y_ = size_y;
+                           int32_t current_y) : game_id_(game_id),
+                                                player_id_(player_id),
+                                                nickname_(nickname),
+                                                race_(race),
+                                                health_(health),
+                                                protection_(protection),
+                                                damage_(damage),
+                                                perception_(perception),
+                                                intellect_(intellect),
+                                                fortune_(fortune),
+                                                size_x_(size_x),
+                                                size_y_(size_y),
+                                                current_x_(current_x),
+                                                current_y_(current_y) {
     visibility_of_labyrinthmap_.reserve(size_x);
     for (int32_t i = 0; i < size_x; i++) {
         visibility_of_labyrinthmap_[i].reserve(size_y);
@@ -42,31 +39,12 @@ ActivePlayer::ActivePlayer(uint64_t game_id,
             visibility_of_labyrinthmap_[i][j] = false;
     }
     visibility_of_labyrinthmap_[current_x][current_y] = true;
-
-    current_x_ = current_x;
-    current_y_ = current_y;
 }
 
-ActivePlayer::ActivePlayer() {
-    game_id_ = 0;
+ActivePlayer::ActivePlayer() : nickname_(""),
+                               race_("") {}
 
-    player_id_ = 0;
-    nickname_ = "";
-    race_ = "";
-
-    health_ = 0;
-    protection_ = 0;
-
-    damage_ = 0;
-    perception_ = 0;
-    intellect_ = 0;
-    fortune_ = 0;
-
-    current_x_ = 0;
-    current_y_ = 0;
-}
-
-int32_t ActivePlayer::GetHealth() {
+int32_t ActivePlayer::GetHealth() const {
     return health_;
 }
 
@@ -76,7 +54,7 @@ bool ActivePlayer::SetHealth(int32_t health) {
     return true;
 }
 
-int32_t ActivePlayer::GetProtection() {
+int32_t ActivePlayer::GetProtection() const {
     return protection_;
 }
 
@@ -86,7 +64,7 @@ bool ActivePlayer::SetProtection(int32_t protection) {
     return true;
 }
 
-bool ActivePlayer::IsVisible(int32_t i, int32_t j) {
+bool ActivePlayer::IsVisible(int32_t i, int32_t j) const {
     return visibility_of_labyrinthmap_[i][j];
 }
 
@@ -94,6 +72,6 @@ void ActivePlayer::MakeVisible(int32_t i, int32_t j) {
     visibility_of_labyrinthmap_[i][j] = true;
 }
 
-bool ActivePlayer::IsAlive() {
+bool ActivePlayer::IsAlive() const {
     return (health_ > 0);
 }

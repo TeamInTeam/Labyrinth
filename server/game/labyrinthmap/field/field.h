@@ -13,15 +13,18 @@ class Field {
  public:
     // Constructor.
     Field(std::string type, bool can_go_);
+    // Default Constructor to be able to create
+    // arrays of Fiels.
+    Field();
     // Destructor.
     virtual ~Field();
 
     // Returns Type of Field.
-    virtual std::string GetType();
+    virtual std::string GetType() const;
 
     // Returns true if player can go
     // to this field.
-    virtual bool CanGo();
+    virtual bool CanGo() const;
 
  protected:
     // Type of Field.

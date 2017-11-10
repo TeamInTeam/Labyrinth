@@ -7,10 +7,10 @@
 Road::Road() :
     Field("Road", true) {}
 
-std::string Road::GetType() {
+std::string Road::GetType() const {
     return type_;
 }
 
-bool Road::CanGo() {
+bool Road::CanGo() const {
     return can_go_;
 }

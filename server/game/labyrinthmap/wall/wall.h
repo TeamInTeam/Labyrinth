@@ -15,15 +15,15 @@ class Wall : public Field {
     Wall(bool is_destroyable);
 
     // Returns Type of Field.
-    std::string GetType();
+    std::string GetType() const;
 
     // Returns true if Wall can be Destroyed
     // in this field.
-    bool IsDestroyable();
+    bool IsDestroyable() const;
 
     // Returns true if player can go
     // to this field.
-    bool CanGo();
+    bool CanGo() const;
 
  private:
     // Is true if wall can be destroyed
