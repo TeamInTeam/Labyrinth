@@ -1,0 +1,1 @@
+g++ -g -std=c++14 -Wall -Wextra test.cpp gamemap.cpp fields/base/base.cpp fields/roads/roads.cpp fields/roads/road/road.cpp fields/roads/river/river.cpp fields/roads/metro/metro.cpp fields/roads/armoury/armoury.cpp fields/roads/hospital/hospital.cpp fields/roads/mine/mine.cpp fields/walls/wall/wall.cpp fields/walls/concrete/concrete.cpp -o gamemap_test
