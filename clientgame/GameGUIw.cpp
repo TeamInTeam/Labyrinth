@@ -130,6 +130,7 @@ bool GameGUIw::get_response(ShowTurn turn) {
             case TurnTypes::WATCH:
                 game_map_[turn.m][turn.n].first = turn.type_of_field;
                 game_map_[turn.m][turn.n].second = turn.get_treasure;
+                break;
             case TurnTypes::GO:
                 game_map_[turn.m][turn.n].first = turn.type_of_field;
                 game_map_[turn.m][turn.n].second = false;
@@ -137,12 +138,13 @@ bool GameGUIw::get_response(ShowTurn turn) {
                     case FieldTypes::WALL:
                     case FieldTypes::CONCRETE:
                         break;
-                    case FieldTypes::ROAD:
+                    case FieldTypes::ROAD: {
                         has_treasure_ = has_treasure_ || turn.get_treasure;
                         cur_m_ = turn.m;
                         cur_n_ = turn.n;
                         break;
-                    case FieldTypes::RIVER:
+                    }
+                    case FieldTypes::RIVER: {
                         status("Swim");
                         for (auto water : turn.river_coordinates) {
                             status(".", false);
@@ -154,13 +156,17 @@ bool GameGUIw::get_response(ShowTurn turn) {
                             std::this_thread::sleep_for(std::chrono::milliseconds(300));
                         }
                         break;
-                    case FieldTypes::METRO:
+                    }
+                    case FieldTypes::METRO: {
                         has_treasure_ = has_treasure_ || turn.get_treasure;
                         game_map_[turn.metro_m][turn.metro_n].first = turn.type_of_field;
                         game_map_[turn.metro_m][turn.metro_n].second = false;
                         cur_m_ = turn.metro_m;
                         cur_n_ = turn.metro_n;
+                        break;
+                    }
                 }
+                break;
             default:
                 status("WTF???");
         }
